@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+// ถ้ายังไม่ได้ Login ให้ส่งกลับไปหน้า login.php[cite: 16]
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
 require 'crud_bootstrap.php';
 $error=''; $name=''; $level='Beginner';
 if($_SERVER['REQUEST_METHOD']==='POST'){
